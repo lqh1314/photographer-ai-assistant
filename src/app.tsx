@@ -9,6 +9,7 @@ import ChatPage from '@/pages/ChatPage';
 import BookingPage from '@/pages/BookingPage';
 import ShootPlanPage from '@/pages/ShootPlanPage';
 import DashboardPage from '@/pages/DashboardPage';
+import SettingsPage from '@/pages/SettingsPage';
 import NotFoundPage from '@/pages/NotFoundPage';
 
 export default function App() {
@@ -24,6 +25,7 @@ export default function App() {
           <Route path="/booking" element={<BookingPage />} />
           <Route path="/plan" element={<ShootPlanPage />} />
           <Route path="/dashboard" element={<DashboardPage />} />
+          <Route path="/settings" element={<SettingsPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
