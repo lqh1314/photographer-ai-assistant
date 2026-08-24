@@ -22,8 +22,9 @@ export function Header({ onMenuClick }: HeaderProps) {
   const [password, setPassword] = useState('');
 
   const handleLogin = () => {
-    if (login(password)) {
-      toast.success(`已进入「${currentRole.name}」模式`);
+    const role = login(password);
+    if (role) {
+      toast.success(`已进入「${role.name}」模式`);
       setLoginOpen(false);
       setPassword('');
     } else {
