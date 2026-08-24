@@ -7,7 +7,7 @@ interface RoleContextType {
   currentRole: RoleDef;
   isPhotographer: boolean;
   isAdmin: boolean;
-  login: (password: string) => boolean;
+  login: (password: string) => RoleDef | null;
   logout: () => void;
   switchRole: (roleId: string) => void;
   hasPermission: (perm: Permission) => boolean;
@@ -26,13 +26,13 @@ export function RoleProvider({ children }: { children: ReactNode }) {
   const isPhotographer = currentRoleId !== 'customer';
   const isAdmin = currentRoleId === 'admin';
 
-  const login = (password: string) => {
+  const login = (password: string): RoleDef | null => {
     const role = roles.find((r) => r.password && r.password === password);
     if (role) {
       setCurrentRoleId(role.id);
-      return true;
+      return role;
     }
-    return false;
+    return null;
   };
 
   const logout = () => setCurrentRoleId('customer');
